@@ -1,22 +1,45 @@
 const goods = [
-    { title: 'Shirt', price: 150 },
-    { title: 'Socks', price: 50 },
-    { title: 'Jacket', price: 350 },
-    { title: 'Shoes', price: 250 },
+  { title: 'Shirt', price: 150 },
+  { title: 'Socks', price: 50 },
+  { title: 'Jacket', price: 350 },
+  { title: 'Shoes', price: 250 },
 ];
 
-const renderGoodsItem = (title = 'test', price = 100) => {
+class GoodsItem {
+  constructor({ title, price }) {
+    this.title = title;
+    this.price = price;
+  }
+  render() {
     return `
     <div class="goods-item">
-      <h3>${title}</h3>
-      <p>${price}</p>
+      <h3>${this.title}</h3>
+      <p>${this.price}</p>
     </div>
   `;
-};
+  }
+}
+class GoodsList {
+  items = [];
+  fetchGoods() {
+    this.items = goods;
+  }
+  commonPrice() {
+    return this.items.reduce((prevValue, { price }) => prevValue + price, 0);
+  }
+  render() {
+    const goods = this.items.map(item => {
+      const goodItem = new GoodsItem(item);
+      return goodItem.render()
+    }).join('');
 
-const renderGoodsList = (list) => {
-    let goodsList = list.map(item => renderGoodsItem(item.title, item.price));
-    document.querySelector('.goods-list').innerHTML = goodsList.join('');
+    document.querySelector('.goods-list').innerHTML = goods;
+  }
 }
 
-renderGoodsList(goods);
+
+const goodsList = new GoodsList();
+goodsList.fetchGoods();
+goodsList.render();
+const commonPriceValue = goodsList.commonPrice();
+debugger;
