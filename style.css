@@ -30,14 +30,16 @@
 
 .goods-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .goods-item {
     width: 200px;
     height: 200px;
     margin-left: 10px;
-    background-color: #c4d1ffc2;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
     display: flex;
     justify-content: flex-end;
     align-items: center;
