@@ -14,6 +14,7 @@ body,
     display: grid;
     grid-template-rows: max-content auto;
     gap: 40px;
+    position: relative;
 }
 
 header {
@@ -83,14 +84,18 @@ button {
 }
 
 .basket-card__header__title {
-    padding: 10px;
+    padding: 10px
 }
 
 .basket-card__header__delete-icon {
-    background-image: url('img/img_126114.png');
+    background-image: url("img/img_126114.png");
     background-size: contain;
     width: 30px;
     height: 30px;
     margin: 10px;
     cursor: pointer;
+}
+
+.basket-card__content {
+    padding: 10px;
 }
